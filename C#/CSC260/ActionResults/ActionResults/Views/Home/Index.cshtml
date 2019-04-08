@@ -1,0 +1,95 @@
+﻿@model ActionResults.Models.Character
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<html>
+    <head>
+        <link href="~/Content/Site.css" rel="stylesheet" />
+    </head>
+    <body>
+        @{
+            string internalTab = "<span style=\"display:inline-block; width: 1em;\"></span>";
+            IHtmlString tab = Html.Raw(internalTab);
+
+            Func<int, IHtmlString> tabs = (Func<int, IHtmlString>)((c) => {
+                string tmp = "";
+                for(int i = 0; i < c; i++) {
+                    tmp += internalTab;
+                }
+                return Html.Raw(tmp);
+            });
+        }
+        <div>
+            <h3>Nav:</h3>@tabs(1)
+            <a href="~/Home/AsString">AsString</a>@tabs(1)
+            <a href="~/Home/AsJson">AsJson</a>@tabs(1)
+            <a href="~/Home/AsXML">AsXML</a>@tabs(1)
+            <a href="~/Home/As404">As404</a>@tabs(1)
+            <a href="~/Home/AsDownload">AsDownload</a>@tabs(1)
+        </div>
+        <br/>
+        <div>
+            <h3>
+                Character:
+            </h3>
+            <p>
+                @tabs(1)
+                <span class="StatTitle">Name</span>: @ViewBag.Char.Name
+            </p>
+            <p>
+                @tabs(1)
+                <span class="StatTitle">Level</span>: @ViewBag.Char.Level
+            </p>
+            <p>
+                @tabs(1)
+                <span class="StatTitle">HealthPoints</span>: @ViewBag.Char.HealthPoints
+            </p>
+            <p>
+                @tabs(1)
+                <span class="StatTitle">Stats</span>:
+            </p>
+            <p>
+                @tabs(2)
+                <span class="StatSubTitle">IQ</span>
+                : @ViewBag.Char.Attributes["IQ"]
+            </p>
+            <p>
+                @tabs(2)
+                <span class="StatSubTitle">ME</span>
+                : @ViewBag.Char.Attributes["ME"]
+            </p>
+            <p>
+                @tabs(2)
+                <span class="StatSubTitle">MA</span>
+                : @ViewBag.Char.Attributes["MA"]
+            </p>
+            <p>
+                @tabs(2)
+                <span class="StatSubTitle">PS</span>
+                : @ViewBag.Char.Attributes["PS"]
+            </p>
+            <p>
+                @tabs(2)
+                <span class="StatSubTitle">PP</span>
+                : @ViewBag.Char.Attributes["PP"]
+            </p>
+            <p>
+                @tabs(2)
+                <span class="StatSubTitle">PE</span>
+                : @ViewBag.Char.Attributes["PE"]
+            </p>
+            <p>
+                @tabs(2)
+                <span class="StatSubTitle">PB</span>
+                : @ViewBag.Char.Attributes["PB"]
+            </p>
+            <p>
+                @tabs(2)
+                <span class="StatSubTitle">Spd</span>
+                : @ViewBag.Char.Attributes["Spd"]
+            </p>
+        </div>
+</body>
+</html>

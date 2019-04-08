@@ -1,0 +1,36 @@
+﻿<Window x:Class="BinarySerializationGUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BinarySerializationGUI"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel
+            Grid.Column="0">
+            <local:DemoDataDisplay
+                x:Name="SaveDisply"
+                TwoWay="True">
+
+            </local:DemoDataDisplay>
+            <Button
+                Content="Save"
+                Click="Save"/>
+        </StackPanel>
+        <StackPanel
+            Grid.Column="1">
+            <local:DemoDataDisplay
+                x:Name="LoadDisply">
+
+            </local:DemoDataDisplay>
+            <Button
+                Content="Load"
+                Click="Load"/>
+        </StackPanel>
+    </Grid>
+</Window>

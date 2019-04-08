@@ -1,0 +1,17 @@
+#runAway{
+    position: absolute;
+    top: inherit;
+    animation: button 5s ease infinite;
+}
+
+@keyframes button{
+    0%{
+        left: 15%;
+    }
+    50%{
+        left: 95%;
+    }
+    100%{
+        left: 15%;
+    }
+}

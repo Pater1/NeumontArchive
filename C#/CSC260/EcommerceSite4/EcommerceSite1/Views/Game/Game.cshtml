@@ -1,0 +1,47 @@
+﻿@model EcommerceSite1.Models.Game
+
+@{
+    string rand = Model.Title_Spaceless;
+}
+
+<div class="FullGameVeiw">
+    <h1>@Model.Title:          $@Model.Price</h1>
+    <div>
+        <img src=@Model.ImageURL />
+    </div>
+    <h3>@Model.ShortDescription</h3>
+    <p>@Model.LongDescription</p>
+    @if (UserHelpers.IsLoggedIn) {
+        <div id="addremove">
+            <div>
+                <div class="button"><a href="#" id="add-@rand">"Add to cart!"</a></div>
+            </div>
+            <input type="text" id="cnt-@rand" />
+            <div>
+                <div class="button"><a href="#" id="rmrv-@rand">"Remove from cart."</a></div>
+            </div>
+        </div>
+    }
+    @if (UserHelpers.IsInRole("Admin")) {
+        <div class="button">@Html.ActionLink("Edit This game", "AddAGame/" + Model.Title_Spaceless)</div>
+        <div class="button">@Html.ActionLink("Delete This game", "RemoveAGame/" + Model.Title_Spaceless)</div>
+    }
+
+    <div id="data-@rand" style="display:none;">
+        <p>/Cart/Add/@Model.Title_Spaceless/</p>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $('*').on('blur change click dblclick error focus focusin focusout hover keydown keypress keyup load mousedown mouseenter mouseleave mousemove mouseout mouseover mouseup resize scroll select submit', function () {
+        document.getElementById("cnt-@rand").value = Math.abs(parseInt(document.getElementById("cnt-@rand").value));
+        if (document.getElementById("cnt-@rand").value === 'NaN' || document.getElementById("cnt-@rand").value === '0') {
+            document.getElementById("cnt-@rand").value = 1;
+        }
+
+        var lnk = document.querySelector("#data-@rand p").textContent;
+        document.getElementById("add-@rand").setAttribute('href', lnk + document.getElementById("cnt-@rand").value);
+        document.getElementById("rmrv-@rand").setAttribute('href', lnk + '-' + document.getElementById("cnt-@rand").value);
+    });
+</script>

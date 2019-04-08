@@ -1,0 +1,196 @@
+﻿<UserControl x:Class="Contacts.ContactForm"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Contacts"
+             xmlns:wpf="http://schemas.microsoft.com/netfx/2009/xaml/presentation"
+xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="600">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Image Grid.RowSpan="2"
+               MaxHeight="50"
+               Source="profile.png"/>
+        <Grid
+            Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label 
+                Grid.Column="0"
+                Grid.Row="0"
+                Content="First Name:"/>
+            <TextBox 
+                Grid.Column="0"
+                Grid.Row="1"
+                Text="{Binding Path=_NameFirst, Mode=TwoWay}"
+                x:Name="FirstNameTextBox"/>
+            <Label 
+                Grid.Column="1"
+                Grid.Row="0"
+                Content="Last Name:"/>
+            <TextBox 
+                Grid.Column="1"
+                Grid.Row="1"
+                Text="{Binding Path=_NameLast, Mode=TwoWay}"
+                x:Name="LastNameTextBox"/>
+        </Grid>
+        <Grid
+            Grid.Column="1"
+            Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.Resources>
+                <ObjectDataProvider x:Key="dataGroup" MethodName="GetValues"
+                        ObjectType="{x:Type sys:Enum}">
+                    <ObjectDataProvider.MethodParameters>
+                        <x:Type TypeName="local:Group"/>
+                    </ObjectDataProvider.MethodParameters>
+                </ObjectDataProvider>
+            </Grid.Resources>
+            <Label Content="Contact Group:"/>
+            <ComboBox 
+                Grid.Row="1"
+                SelectedItem="{Binding Path=_Group, Mode=TwoWay}"
+                ItemsSource="{Binding Source={StaticResource dataGroup}}"/>
+        </Grid>
+        <Grid
+            Grid.Column="1"
+            Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.Resources>
+                <ObjectDataProvider x:Key="dataPhoneType" MethodName="GetValues"
+                        ObjectType="{x:Type sys:Enum}">
+                    <ObjectDataProvider.MethodParameters>
+                        <x:Type TypeName="local:PhoneType"/>
+                    </ObjectDataProvider.MethodParameters>
+                </ObjectDataProvider>
+            </Grid.Resources>
+            <ComboBox 
+                x:Name="PhoneSeletor"
+                ItemsSource="{Binding Path=_Phones}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <Label Content="{Binding Path=_Number}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBox 
+                Grid.Row="1"
+                Text="{Binding 
+                    ElementName=PhoneSeletor, 
+                    Path=SelectedItem._Number, 
+                    Mode=TwoWay}"
+                x:Name="PhoneNumberTextBox"/>
+            <ComboBox
+                Grid.Column="1"
+                SelectedItem="{Binding 
+                    ElementName=PhoneSeletor, 
+                    Path=SelectedItem._Type,
+                    Mode=TwoWay}"
+                ItemsSource="{Binding Source={StaticResource dataPhoneType}}"
+                />
+            <Grid
+                Grid.Row="1"
+                Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Button
+                    Grid.Row="0"
+                    Content="Add new"
+                    Click="AddNewPhone"/>
+                <Button
+                    Grid.Row="1"
+                    Content="Delete Curent"
+                    Click="DeleteCurrentPhone"/>
+            </Grid>
+        </Grid>
+        <Grid
+            Grid.Column="1"
+            Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.Resources>
+                <ObjectDataProvider x:Key="dataEmailType" MethodName="GetValues"
+                        ObjectType="{x:Type sys:Enum}">
+                    <ObjectDataProvider.MethodParameters>
+                        <x:Type TypeName="local:EmailType"/>
+                    </ObjectDataProvider.MethodParameters>
+                </ObjectDataProvider>
+            </Grid.Resources>
+            <ComboBox 
+                x:Name="EmailSeletor"
+                ItemsSource="{Binding Path=_Emails}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <Label Content="{Binding Path=_Address}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBox 
+                Grid.Row="1"
+                Text="{Binding 
+                    ElementName=EmailSeletor, 
+                    Path=SelectedItem._Address, 
+                    Mode=TwoWay}"
+                x:Name="EmailTextBox"/>
+            <ComboBox
+                Grid.Column="1"
+                SelectedItem="{Binding 
+                    ElementName=EmailSeletor, 
+                    Path=SelectedItem._Type,
+                    Mode=TwoWay}"
+                ItemsSource="{Binding Source={StaticResource dataEmailType}}"
+                />
+            <Grid
+                Grid.Row="1"
+                Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Button
+                    Grid.Row="0"
+                    Content="Add new"
+                    Click="AddNewEmail"/>
+                <Button
+                    Grid.Row="1"
+                    Content="Delete Curent"
+                    Click="DeleteCurrentEmail"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

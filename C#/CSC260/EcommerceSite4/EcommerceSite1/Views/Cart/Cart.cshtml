@@ -1,0 +1,16 @@
+﻿@using EcommerceSite1.Models
+@model IEnumerable<Tuple<Cart, Game, ApplicationUser>>
+
+@foreach (Tuple<Cart, Game, ApplicationUser> t in Model) {
+    if (t.Item1 != null && t.Item2 != null && t.Item3 != null) {
+        @Html.Partial("~/Views/Cart/Cart_Item.cshtml", t)
+    }
+}
+<div>
+    <h2>Total: $@Model.Select(x => x.Item1.Count * x.Item2.Price).Sum()</h2>
+    <span class="button">
+        <a href="/Cart/Checkout/@Model.Select(x => x.Item1.Count * x.Item2.Price).Sum()/">
+            Checkout!
+        </a>
+    </span>
+</div>

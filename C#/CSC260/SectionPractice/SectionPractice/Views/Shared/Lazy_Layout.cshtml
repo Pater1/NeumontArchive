@@ -1,0 +1,22 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Lazy_Layout</title>
+    @Styles.Render("~/Content/lazy.css")
+</head>
+<body>
+    <div> 
+        @RenderSection("Header")
+        @RenderSection("Nav")
+        @RenderBody()
+        @RenderSection("Footer")
+    </div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+﻿@using EcommerceSite1;
+
+@{ 
+    string[] possibleHeaders = new string[] {
+        "/Resources/HeaderImages/Beyonnetta.jpg",
+        "/Resources/HeaderImages/BOTW_Moody.jpg",
+        "/Resources/HeaderImages/joesIWv.jpg",
+        "/Resources/HeaderImages/KoopaTroopa.jpg",
+        "/Resources/HeaderImages/megaman.jpg",
+        "/Resources/HeaderImages/NESHeader.png",
+        "/Resources/HeaderImages/Pokemon-Go-Game-Desktop-Wallpaper.jpg",
+        "/Resources/HeaderImages/Skyrim.jpg",
+        "/Resources/HeaderImages/spatoon.jpg",
+        "/Resources/HeaderImages/squidsisters.jpg",
+    };
+
+    Random rand = new Random();
+    string curHeader = possibleHeaders[rand.Next(0, possibleHeaders.Length)];
+}
+
+<div>
+    <img id="headerImage" src=@curHeader />
+    <h1 id="headerText">Undiscovered Game Exchange</h1>
+    @if (UserHelpers.IsLoggedIn) {
+        <a href="/Cart/Index">
+            <h1 id="headerUserName">
+                @("Welcome, " + UserHelpers.LoggedInName + "!")
+                <img id="headerCart" src="~/Resources/Iconshock-Real-Vista-Business-Shopping-cart.ico" />
+            </h1>
+        </a>
+    } else {
+        <h1 id="headerUserName">@("Welcome, You customer!")</h1>
+    }
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $('#headerUserName').on('mouseenter', function () {
+        updateTransition(true);
+    });
+    $('#headerUserName').on('mouseleave', function () {
+        updateTransition(false);
+    });
+
+    function updateTransition(show) {
+        var el = document.querySelector("#headerCart");
+        if (!el) {
+            el = document.querySelector("#headerCart_shown");
+        }
+
+        if (show) {
+            el.id = "headerCart_shown";
+        } else {
+            el.id = "headerCart";
+        }
+
+        return el;
+    }
+</script>

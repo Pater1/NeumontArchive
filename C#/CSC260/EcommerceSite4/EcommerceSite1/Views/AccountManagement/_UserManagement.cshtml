@@ -1,0 +1,18 @@
+﻿@using EcommerceSite1.Models
+@model ApplicationUser
+
+<div>
+    @using (Html.BeginForm("UpdateUser", "Admin", FormMethod.Post, new { @class = "Form", @id = "Register", role = "form" })) {
+        @Html.AntiForgeryToken()
+        <span>
+            @Model.UserName:
+        </span>
+        <span class="FormListing">
+            @foreach (var role in Model.Roles) {
+                <span>
+                    @role.ToString()
+                </span>
+            }
+        </span>
+    }
+</div>

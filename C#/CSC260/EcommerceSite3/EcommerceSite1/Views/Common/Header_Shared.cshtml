@@ -1,0 +1,29 @@
+﻿@using EcommerceSite1;
+
+@{ 
+    string[] possibleHeaders = new string[] {
+        "/Resources/HeaderImages/Beyonnetta.jpg",
+        "/Resources/HeaderImages/BOTW_Moody.jpg",
+        "/Resources/HeaderImages/joesIWv.jpg",
+        "/Resources/HeaderImages/KoopaTroopa.jpg",
+        "/Resources/HeaderImages/megaman.jpg",
+        "/Resources/HeaderImages/NESHeader.png",
+        "/Resources/HeaderImages/Pokemon-Go-Game-Desktop-Wallpaper.jpg",
+        "/Resources/HeaderImages/Skyrim.jpg",
+        "/Resources/HeaderImages/spatoon.jpg",
+        "/Resources/HeaderImages/squidsisters.jpg",
+    };
+
+    Random rand = new Random();
+    string curHeader = possibleHeaders[rand.Next(0, possibleHeaders.Length)];
+}
+
+<div>
+    <img id="headerImage" src=@curHeader />
+    <h1 id="headerText">Undiscovered Game Exchange</h1>
+    @if (UserHelpers.IsLoggedIn) {
+        <h1 id="headerUserName">@("Welcome, " + UserHelpers.LoggedInName + "!")</h1>
+    } else {
+        <h1 id="headerUserName">@("Welcome, You customer!")</h1>
+    }
+</div>

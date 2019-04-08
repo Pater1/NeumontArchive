@@ -1,0 +1,30 @@
+﻿<form name="MakeContact">
+    <asp:ValidationSummary runat=server
+                           HeaderText="There were errors on the page:" />
+
+    First Name:<br/>
+    <asp:RequiredFieldValidator runat=server
+                                ControlToValidate=txtFirstName
+                                ErrorMessage="First Name is required."/>
+    *<input type="text" id=txtFirstName size=25 runat=server causesvalidation="true"><br />
+    Last Name:<br />
+    <asp:RequiredFieldValidator runat=server
+                                ControlToValidate=txtLastName
+                                ErrorMessage="Last Name is required."/>
+    *<input type="text" id=txtLastName size=25 runat=server><br />
+
+    Phone Number:<br />
+    <input type="tel" id=txtPhoneNumber size=25 runat=server><br />
+    Email:<br />
+    <input type="email" id=txtEmail size=25 runat=server><br />
+
+    Age:<br />
+    <asp:CompareValidator runat=server
+                          ControlToValidate=txtAge
+                          ControlToCompare=5
+                          operator="LessThan" type="Integer"
+                          ErrorMessage="Passwords do not match." />
+    *<input type="number" id=txtAge size=25 runat=server><br />
+
+    <input type="submit">
+</form>

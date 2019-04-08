@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@Page.Title</title>
+    @RenderSection("head", required: false)
+</head>
+<body>
+    @Html.ActionLink("Home", "Home", "Home")
+    @Html.ActionLink("About", "About", "Home")
+    @Html.ActionLink("Heros", "Heros", "Hero")
+    @Html.ActionLink("Maps", "Maps", "Hero")
+
+    <br/>
+    @RenderBody()
+    <br />
+</body>
+</html>

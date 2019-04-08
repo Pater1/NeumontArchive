@@ -1,0 +1,63 @@
+﻿<Window x:Class="Contacts.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Contacts"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Open"
+                  Executed="OpenExecuted"/>
+        <CommandBinding Command="ApplicationCommands.Save"
+                  Executed="SaveExecuted"/>
+        <CommandBinding Command="ApplicationCommands.SaveAs"
+                  Executed="SaveAsExecuted"/>
+    </Window.CommandBindings>
+    <StackPanel>
+        <Menu>
+            <MenuItem Header="_File">
+                <MenuItem Header="_Save"
+                          Command="ApplicationCommands.Save"/>
+                <MenuItem Header="Save _As"
+                          Command="ApplicationCommands.SaveAs"/>
+                <MenuItem Header="_Open"
+                          Command="ApplicationCommands.Open"/>
+            </MenuItem>
+        </Menu>
+
+        <ComboBox
+            x:Name="Contacts"
+            ItemsSource="{Binding Path=_Contacts}"
+            SelectionChanged="ChangedSelection">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <Label 
+                        Content="{Binding 
+                            Path=_NameFirst}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <local:ContactForm
+            x:Name="Form"
+            DataContext="{Binding  
+                Path=_ActiveContact,
+                Mode=TwoWay}"
+        />
+
+        <Button
+            x:Name="NewContact"
+            Content="New Contact"
+            Click="NewContact_Click"/>
+        <Button
+            x:Name="SaveContact"
+            Content="Save Contact"
+            Click="SaveContact_Click"
+            Visibility="Collapsed"/>
+        <Button
+            x:Name="DeleteContact"
+            Content="Delete Contact"
+            Click="DeleteContact_Click"/>
+    </StackPanel>
+</Window>

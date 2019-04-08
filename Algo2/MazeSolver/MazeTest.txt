@@ -1,0 +1,51 @@
+A,B,C,D,E,F
+A,E
+A,B
+B,A,C,D,F
+C,B
+D,B,E,F
+E,D,F
+F,B,D,E
+// Answer should be
+// A B D E or A B F E
+
+A,B,Z,X,Y,K,R,C,P
+Z,K
+Z,X
+X,Z,A,R
+R,X,P
+P,R
+A,X,B
+B,A,Y
+Y,B,C
+C,Y,K
+K,C
+// Answer should be
+// Z X A B Y C K
+
+A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,Z
+A,Z
+A,B
+B,A,C,I
+C,B,D
+D,C,E
+E,D,F,N
+F,E,G
+G,F,H
+H,G,Z
+I,B,J
+J,I,K,M
+K,J,L
+L,K,Z
+M,J,N,O
+O,M,N
+N,M,O
+Z,L,H
+// Answer should be
+// A B I J K L Z
+
+A,B,C
+A,C
+A,B
+B,A
+// Should not work

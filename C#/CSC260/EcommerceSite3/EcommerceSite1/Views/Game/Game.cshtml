@@ -1,0 +1,14 @@
+﻿@model EcommerceSite1.Models.Game
+
+<div class="FullGameVeiw">
+    <h1>@Model.Title:          $@Model.Price</h1>
+    <div>
+        <img src=@Model.ImageURL />
+    </div>
+    <h3>@Model.ShortDescription</h3>
+    <p>@Model.LongDescription</p>
+    @if (UserHelpers.IsInRole("Admin")) {
+    <div class="button">@Html.ActionLink("Edit This game", "AddAGame/" + Model.Title_Spaceless)</div>
+    <div class="button">@Html.ActionLink("Delete This game", "RemoveAGame/" + Model.Title_Spaceless)</div>
+    }
+</div>

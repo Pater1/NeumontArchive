@@ -1,0 +1,35 @@
+﻿@using System.Collections.Generic
+@using EcommerceSite1.Models;
+
+@model IEnumerable<Game>
+
+<div>
+    @{
+        bool first = false;
+        string rand = Model.GetHashCode().ToString();
+    }
+    <div>
+        <input type="text" id="cnt-@rand" />
+        <div class="button"><a href="#" id="rmrv-@rand">"Search."</a></div>
+    </div>
+    @if (Model.Count() <= 0) {
+        @ViewBag.message
+    }
+    @foreach (Game g in Model) {
+        if (!first) {
+            first = true;
+        } else {
+            <hr />
+        }
+        <div>
+            @Html.Partial("~/Views/Game/GameVeiw_Large.cshtml", g)
+        </div>
+    }
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $('*').on('blur change click dblclick error focus focusin focusout hover keydown keypress keyup load mousedown mouseenter mouseleave mousemove mouseout mouseover mouseup resize scroll select submit', function () {
+        document.getElementById("rmrv-@rand").setAttribute('href', '/Game/Catalog/' + document.getElementById("cnt-@rand").value);
+    });
+</script>

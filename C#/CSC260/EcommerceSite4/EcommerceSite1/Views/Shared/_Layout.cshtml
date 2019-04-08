@@ -1,0 +1,26 @@
+﻿@using EcommerceSite1.Models
+@using System.Linq
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - My ASP.NET Application</title>
+        @Styles.Render("~/Content/Site.css")
+
+    </head>
+    <body>
+        <div class="GridWrapper">
+            <div class="Nav">@RenderPage("~/Views/Common/Nav_Shared.cshtml")</div>
+            <div class="Header">@RenderPage("~/Views/Common/Header_Shared.cshtml")</div>
+            @using (GameDB db = new GameDB()) {
+            <div class="Sidebar">@Html.Partial("~/Views/Common/Sidebar_Shared.cshtml", @db.Games.Take(10).ToList())</div>
+            }
+            <div class="Content">@RenderBody()
+                <div>@RenderSection("Scripts", required: false)</div>
+            </div>
+            <div class="Footer">@RenderPage("~/Views/Common/Footer_Shared.cshtml")</div>
+        </div>
+    </body>
+</html>

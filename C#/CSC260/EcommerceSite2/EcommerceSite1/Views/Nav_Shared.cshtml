@@ -1,0 +1,10 @@
+﻿@{
+    Layout = null;
+}
+@Styles.Render("~/Content/Site.css")
+
+<div> 
+    <div class="button">@Html.ActionLink("Home", "Index")</div>
+    <div class="button"><a href="~/Catalog">Catalog</a></div>
+    <div class="button">@Html.ActionLink("Add New Game", "AddAGame")</div>
+</div>

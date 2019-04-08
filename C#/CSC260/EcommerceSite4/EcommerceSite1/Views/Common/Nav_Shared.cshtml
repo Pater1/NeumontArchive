@@ -1,0 +1,20 @@
+﻿@{
+    Layout = null;
+}
+@Styles.Render("~/Content/Site.css")
+
+<div> 
+    <div class="button">@Html.ActionLink("Home", "Index", "Home", new { }, null)</div>
+    @*<div class="button">@Html.ActionLink("Catalog", "Catalog", "Game", new { }, null)</div>*@
+    <div class="button"><a href="/Game/Catalog/">Catalog</a></div>
+    @*<div class="button">@Html.ActionLink("Catalog", "Catalog", new { controller = "Game" })</div>*@
+    @if (!UserHelpers.IsLoggedIn) {
+        <div class="button">@Html.ActionLink("Login / Register", "LoginOrRegister", new { controller = "Account" })</div>
+    } else {
+        <div class="button">@Html.ActionLink("Logout", "LogOff", new { controller = "Account" })</div>
+        if (UserHelpers.IsInRole("Admin")) {
+            <div class="button">@Html.ActionLink("Add New Game", "AddAGame", new { controller = "Game" })</div>
+            <div class="button">@Html.ActionLink("Manage Users", "UserAdmin", new { controller = "Admin" })</div>
+        }
+    }
+</div>

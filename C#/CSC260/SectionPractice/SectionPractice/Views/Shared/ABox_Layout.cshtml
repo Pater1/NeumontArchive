@@ -1,0 +1,22 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ABox_Layout</title>
+    @Styles.Render("~/Content/boxy.css")
+</head>
+<body>
+    <div> 
+        @RenderSection("Header")
+        @RenderBody()
+        @RenderSection("Nav")
+        @RenderSection("Footer")
+    </div>
+</body>
+</html>

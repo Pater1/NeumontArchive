@@ -1,0 +1,11 @@
+﻿@model EcommerceSite1.Models.Game
+
+<a class="LargeGameVeiw" href=@("/Game/Catalog/"+Model.Title_Spaceless)>
+    <h1>@Model.Title</h1>
+    <h2>$@Model.Price</h2>
+    <div>
+        <img src=@Model.ImageURL />
+    </div>
+    <h3>@Model.ShortDescription</h3>
+    <p>@Model.LongDescription</p>
+</a>

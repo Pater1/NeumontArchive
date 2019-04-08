@@ -1,0 +1,35 @@
+﻿@model HelloMVC_take4.Models.FormResponce
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Thanks</title>
+</head>
+<body>
+    <div> 
+        <h1>Thank you, @Model.NameFirst @Model.NameLast!</h1>
+        @{
+            bool minor = Model.Age < 18;
+            string personNamed = minor ? "your parents" : "you";
+
+            bool emailHas = !string.IsNullOrEmpty(Model.Email);
+            string emailProvider = emailHas? Model.Email.Split('@', '.')[1]: "";
+            string emailMessage = emailHas? $"look forward to sending {personNamed} an email via {emailProvider}!": "";
+        }
+        @if (!string.IsNullOrEmpty(Model.PhoneNumber)) {
+            @:<p>We'll be calling @personNamed soon!</p>
+            if (emailHas) {
+                <p>And, we @emailMessage</p>
+            }
+        } else if (emailHas) {
+            <p>We @emailMessage</p>
+        }
+    </div>
+</body>
+</html>

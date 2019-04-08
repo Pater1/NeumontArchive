@@ -1,0 +1,29 @@
+﻿@model HelloMVC_take4.Models.FormResponce
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>RandForm</title>
+        <link rel="stylesheet" type="text/css" href="~/Content/ErrorStyling.css" />
+    </head>
+    <body>
+        <h1>Have happy day. Try this new form, please!</h1>
+        <div class="surroundingDiv">
+            @using (Html.BeginForm()) {
+                @Html.ValidationSummary()
+                <p>Your first name:<br/>@Html.TextBoxFor(x => x.NameFirst) </p>
+                <p>Your last name:<br/>@Html.TextBoxFor(x => x.NameLast) </p>
+                <p>Your email:<br/>@Html.TextBoxFor(x => x.Email)</p>
+                <p>Your phone:<br/>@Html.TextBoxFor(x => x.PhoneNumber)</p>
+                <p>Your age:<br/>@Html.TextBoxFor(x => x.Age)</p>
+                <input type="submit" value="Submit Form" />
+            }
+        </div>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Calculator</string>
+
+    <string name="one">1</string>
+    <string name="two">2</string>
+    <string name="three">3</string>
+    <string name="four">4</string>
+    <string name="five">5</string>
+    <string name="six">6</string>
+    <string name="seven">7</string>
+    <string name="eight">8</string>
+    <string name="nine">9</string>
+    <string name="zero">0</string>
+    <string name="doubleZero">00</string>
+    <string name="decimal">.</string>
+    <string name="subtract">-</string>
+    <string name="add">+</string>
+    <string name="divide">/</string>
+    <string name="multiply">*</string>
+    <string name="modulus">%</string>
+    <string name="openParenthasis">(</string>
+    <string name="closeParenthasis">)</string>
+    <string name="memoryAccess">MEM</string>
+    <string name="clear">CLEAR</string>
+    <string name="advanced">ADV</string>
+    <string name="trigonometry">TRIG</string>
+    <string name="delete">DEL</string>
+    <string name="saveFormula">Save</string>
+    <string name="saveNumber">Save</string>
+</resources>

@@ -1,0 +1,51 @@
+﻿@using EcommerceSite1.Models
+@using System;
+@model Tuple<Cart, Game, ApplicationUser>
+
+@{
+    string rand = Model.Item2.Title_Spaceless;
+}
+
+<div id="cartItem">
+    <div id="game">
+        @Html.Partial("~/Views/Game/GameVeiw_Large.cshtml", Model.Item2)
+    </div>
+    <div id="paymentData">
+        <div id="addremove">
+            <div class="button"><a href="/Cart/Add/@Model.Item2.Title_Spaceless/-@Model.Item1.Count">"Remove all from cart!"</a></div>
+            <input type="text" id="cnt-@rand" />
+            <div>
+                <div class="button"><a href="#" id="add-@rand">"Add to cart!"</a></div>
+            </div>
+            <div>
+                <div class="button"><a href="#" id="rmrv-@rand">"Remove from cart."</a></div>
+            </div>
+        </div>
+        <hr />
+        <div id="formula">
+            <h2>$@Model.Item2.Price</h2>
+            <h2>*</h2>
+            <h2>@Model.Item1.Count</h2>
+            <h2>=</h2>
+        </div>
+        <h1 id="total">$@(Model.Item2.Price * Model.Item1.Count)</h1>
+    </div>
+
+    <div id="data-@rand" style="display:none;">
+        <p>/Cart/Add/@Model.Item2.Title_Spaceless/</p>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+    $('*').on('blur change click dblclick error focus focusin focusout hover keydown keypress keyup load mousedown mouseenter mouseleave mousemove mouseout mouseover mouseup resize scroll select submit', function () {
+        document.getElementById("cnt-@rand").value = Math.abs(parseInt(document.getElementById("cnt-@rand").value));
+        if (document.getElementById("cnt-@rand").value === 'NaN' || document.getElementById("cnt-@rand").value === '0') {
+            document.getElementById("cnt-@rand").value = 1;
+        }
+
+        var lnk = document.querySelector("#data-@rand p").textContent;
+        document.getElementById("add-@rand").setAttribute('href', lnk + document.getElementById("cnt-@rand").value);
+        document.getElementById("rmrv-@rand").setAttribute('href', lnk + '-' + document.getElementById("cnt-@rand").value);
+    });
+    </script>
+</div>

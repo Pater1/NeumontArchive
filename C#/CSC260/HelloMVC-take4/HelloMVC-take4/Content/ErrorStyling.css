@@ -1,0 +1,39 @@
+﻿body {
+    background: #faa;
+    text-align: center;
+}
+form {
+    width: 50%;
+    margin: auto;
+    border: 5px solid  #000;
+    padding: 25px;
+}
+.surroundingDiv {
+    display: block;
+    margin: auto;
+    width: 50%;
+    height: 100%;
+    background: #f66;
+    padding: 10%;
+}
+
+.field-validation-error {
+    color: #00f;
+}
+
+.field-validation-valid {
+}
+
+.input-validation-error {
+    border: 1px solid #00f;
+    background-color: #eef;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #00f;
+}
+
+.validation-summary-valid {
+    display: none;
+}

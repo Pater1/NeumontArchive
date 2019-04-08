@@ -1,0 +1,22 @@
+﻿@using CodeQuiz01.Models
+@model Vehicle
+@{
+    ViewBag.Title = "Index";
+    
+    string text = "";
+}
+
+<p>
+    <a href="~/Default/Index/Car">Car</a>
+    <a href="~/Default/Index/Boat">Boat</a>
+    <a href="~/Default/Index/Plane">Plane</a>
+</p>
+
+<p>
+    @if (Model != null) {
+        text = $"I {Model.Operation()} my {Model.TypeName}";
+    } else {
+        text = $"I wait on my user";
+    }
+    @text
+</p>

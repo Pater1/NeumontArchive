@@ -1,0 +1,75 @@
+﻿<UserControl x:Class="BattleCruiser.Game"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BattleCruiser"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="900">
+    <Grid
+        x:Name="grid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="{Binding ElementName=playerBoard, Path=Height}"/>
+            <RowDefinition Height="{Binding ElementName=enemyBoard, Path=Height}"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="700"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <local:SeaBoard
+            x:Name="playerBoard"
+            Grid.Row="0"
+            Grid.RowSpan="2"/>
+        <local:SeaBoard
+            x:Name="enemyBoard"
+            Grid.Row="1"
+            Visibility="Collapsed"/>
+
+        <Grid
+            Grid.Column="1"
+            Grid.RowSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+            <Image
+                x:Name="WinPic"
+                Source="Resources/AWinnerIsYou.png"
+                MaxWidth="400"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                VerticalAlignment="Bottom"
+                Visibility="Hidden"/>
+            <Image
+                x:Name="LoosePic"
+                Source="Resources/AWinnerIsNotYou.png"
+                MaxWidth="400"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                VerticalAlignment="Bottom"
+                Visibility="Hidden"/>
+            <Image
+                x:Name="NewButton"
+                Source="Resources/NewGame.png"
+                MaxWidth="200"
+                Grid.Column="0"
+                Grid.Row="1"
+                VerticalAlignment="Top"
+                Visibility="Hidden"
+                MouseLeftButtonDown="NewGame"/>
+            <Image
+                x:Name="LoadButton"
+                Source="Resources/LoadGame.png"
+                MaxWidth="200"
+                Grid.Column="1"
+                Grid.Row="1"
+                VerticalAlignment="Top"
+                Visibility="Hidden"
+                MouseLeftButtonDown="LoadGame"/>
+        </Grid>
+    </Grid>
+</UserControl>

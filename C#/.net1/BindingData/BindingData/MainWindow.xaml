@@ -1,0 +1,93 @@
+﻿<Window x:Class="BindingData.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BindingData"
+        mc:Ignorable="d"
+        Title="The Person Binder (Data-wise)" Height="350" Width="525">
+    <StackPanel
+        x:Name="MainPanel"
+        Background="AntiqueWhite">
+        <StackPanel
+            x:Name="DisplayPanel"
+            Width="125"
+            Background="BurlyWood">
+            <Border BorderBrush="#FF000000" BorderThickness="1,1,1,1" CornerRadius="8,8,8,8">
+                <StackPanel>
+                    <Label
+                    x:Name="FirstNameLabelLabel"
+                    Content="FirstName:"
+                    HorizontalContentAlignment="Right"
+                />
+                    <Label
+                    x:Name="FirstNameLabel"
+                    Content="{Binding Path=_NameFirst}"
+                />
+                </StackPanel>
+            </Border>
+            <Border BorderBrush="#FF000000" BorderThickness="1,1,1,1" CornerRadius="8,8,8,8">
+                <StackPanel>
+                    <Label
+                        x:Name="LastNameLabelLabel"
+                        Content="LastName:"
+                        HorizontalContentAlignment="Right"
+                    />
+                    <Label
+                        x:Name="LastNameLabel"
+                        Content="{Binding Path=_NameLast}"
+                    />
+                </StackPanel>
+            </Border>
+            <Border BorderBrush="#FF000000" BorderThickness="1,1,1,1" CornerRadius="8,8,8,8">
+                <StackPanel>
+                    <Label
+                        x:Name="AgeLabelLabel"
+                        Content="Age:"
+                        HorizontalContentAlignment="Right"
+                    />
+                    <Label
+                        x:Name="AgeLabel"
+                        Content="{Binding Path=_Age}"
+                    />
+                </StackPanel>
+            </Border>
+            <Border BorderBrush="#FF000000" BorderThickness="1,1,1,1" CornerRadius="8,8,8,8">
+                <StackPanel>
+                    <Label
+                        x:Name="GenderLabelLabel"
+                        Content="Gender:"
+                        HorizontalContentAlignment="Right"
+                    />
+                    <Label
+                        x:Name="GenderLabel"
+                        Content="{Binding Path=_Gender}"
+                    />
+                </StackPanel>
+            </Border>
+        </StackPanel>
+        <Grid
+            x:Name="ButtonsGrid"
+            Background="Chocolate">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Button
+                Height="50"
+                Width="150"
+                Content="Randomize Person"
+                Margin="10,5,10,5"
+                Grid.Column="0"
+                Click="RandomizePerson_Click"/>
+            <Button
+                Height="50"
+                Width="150"
+                Content="Close"
+                Margin="10,5,10,5"
+                Grid.Column="2"
+                Click="Exit_Click"/>
+        </Grid>
+    </StackPanel>
+</Window>

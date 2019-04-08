@@ -1,0 +1,306 @@
+﻿@font-face {
+    font-family: 'HyliaSerifBeta-Regular';
+    src: url('../Resources/Fonts/HyliaSerifBeta-Regular.otf') format('opentype');
+}
+
+html {
+    --bg: rgba(253,255,250,1.0);
+    --text: rgb(80,81,79);
+    --text-dark: rgb(0,21,20);
+    --accent: rgb(107,5,4);
+    /**/
+    --link: rgba(174,118,118,0.75);
+    --link-hover: rgba(107,5,4, 0.75);
+    --link-visited: rgba(174,118,118,1.0);
+    --link-active: rgba(107,5,4, 1);
+    /**/
+    --link-border: rgba(133,50,49,0.75);
+    --link-border-hover: rgba(69,4,3,0.75);
+    --link-border-visited: rgba(133,50,49,1.0);
+    --link-border-active: rgba(69,4,3,1.0);
+    /**/
+    --sidebar-width: 250px;
+}
+
+body {
+    background-color: var(--bg);
+    font-family: 'HyliaSerifBeta-Regular', Gabriola, serif;
+}
+
+.GridWrapper {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 10px 1fr;
+    grid-template-rows: 150px repeat(5, auto);
+    grid-gap: 10px;
+}
+.Header {
+    grid-column: 1/3;
+    grid-row: 1;
+}
+.Nav {
+    grid-column: 1;
+    grid-row: 2;
+}
+.Sidebar {
+    grid-column: 1;
+    grid-row: 3/4;
+}
+.Content {
+    grid-column: 3;
+    grid-row: 2/5;
+}
+.Footer {
+    grid-column: 1/3;
+    grid-row: 6;
+}
+
+.button {
+    display: block;
+    padding: 5px;
+}
+.button a {
+    text-decoration: none;
+    color: var(--text);
+    /**/
+    width: var(--sidebar-width);
+    height: 25px;
+    border-radius: 10px;
+    border: solid 2px black;
+    padding: 2px;
+    /**/
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+}
+.button a:link {
+    background-color: var(--link);
+    border-color: var(--link-border);
+}
+.button a:visited {
+    background-color: var(--link-visited);
+    border-color: var(--link-border-visited);
+}
+.button a:hover {
+    background-color: var(--link-hover);
+    border-color: var(--link-border-hover);
+}
+.button a:active {
+    background-color: var(--link-active);
+    border-color: var(--link-border-active);
+}
+
+#headerImage {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+    z-index: -1;
+}
+#headerText {
+    color: var(--bg);
+    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.9)), to(rgba(0,0,0,0.4)));
+    width: 250px;
+    height: 100px;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    background-image: radial-gradient(var(--accent) 0%, transparent 75%, transparent 100%);
+}
+
+#Sidebar {
+    text-align: center;
+    background: var(--link-border);
+    min-width: var(--sidebar-width);
+    width: var(--sidebar-width);
+    max-width: var(--sidebar-width);
+    display: table-cell;
+    border-radius: 10px;
+}
+.SmallGameVeiw img {
+    border-radius: 25px;
+    display: inline;
+    box-shadow: 0px 0px 50px 5px rgba(1,1,1,1);
+    width: 100%;
+    text-align: center;
+}
+
+.LargeGameVeiw {
+    display: grid;
+    grid-template-areas:    "img    img     title" 
+                            "img    img     sDesc" 
+                            "img    img     prc" 
+                            "lDesc  lDesc   lDesc";
+    grid-template-rows: repeat(3, auto);
+    grid-template-columns: repeat(3, 1fr);
+    border-radius: 10px;
+    border: solid 5px black;
+    padding: 10px;
+    text-decoration: none;
+    color: var(--text);
+}
+.LargeGameVeiw:link {
+    background-color: rgba(1,1,1,0.25);
+    color: var(--text);
+}
+.LargeGameVeiw:hover {
+    background-color: rgba(1,1,1,0.5);
+    color: rgba(200,200,225,0.8);
+}
+.LargeGameVeiw:active {
+    background-color: var(--link-active);
+}
+.LargeGameVeiw div{
+    padding: 10px;
+    grid-area: img;
+}
+.LargeGameVeiw div img {
+    border-radius: 25px;
+    text-align: center;
+    max-width: 100%;
+    display: inline;
+    box-shadow: 0px 0px 50px 5px rgba(1,1,1,1);
+}
+.LargeGameVeiw h2{
+    grid-area: prc;
+    text-align: center;
+}
+.LargeGameVeiw h1 {
+    grid-area: title;
+    text-align: center;
+}
+.LargeGameVeiw h3 {
+    grid-area: sDesc;
+    text-align: center;
+}
+.LargeGameVeiw p {
+    grid-area: lDesc;
+    text-align: center;
+}
+
+.FullGameVeiw {
+    border-radius: 10px;
+    background-color: rgba(1,1,1,0.25);
+    box-shadow: 0px 0px 50px 5px rgba(1,1,1,1);
+}
+.FullGameVeiw h1 {
+    text-align: center;
+    font-size: 4em;
+}
+.FullGameVeiw div {
+    padding: 25px;
+}
+.FullGameVeiw div img {
+    border-radius: 25px;
+    text-align: center;
+    display: inline;
+    box-shadow: 0px 0px 50px 5px rgba(1,1,1,1);
+    width: 100%;
+}
+.FullGameVeiw h3 {
+    padding: 25px;
+}
+.FullGameVeiw p {
+    padding: 25px;
+}
+
+#Home {
+    text-align: center;
+    border-radius: 10px;
+    background-color: rgba(1,1,1,0.25);
+    box-shadow: 0px 0px 50px 5px rgba(1,1,1,1);
+}
+#Home h1{
+    text-align: center;
+}
+#Home h2{
+    text-align: center;
+}
+#Home img{
+    text-align: center;
+    border-radius: 25px;
+    display: inline;
+    box-shadow: 0px 0px 50px 5px rgba(1,1,1,1);
+}
+#Home p{
+    text-align: center;
+}
+#Home h6{
+    text-align: right;
+}
+
+#Form {
+    display: grid;
+    grid-template-areas:    "perm   perm    title"
+                            "img    img     sDesc" 
+                            "img    img     sDesc" 
+                            "imgtxt imgupd  prc" 
+                            "lDesc  lDesc   lDesc"
+                            "submit submit  submit";
+    grid-template-rows: repeat(5, auto);
+    grid-template-columns: 4fr 1fr 4fr;
+    
+    border-radius: 10px;
+    background-color: rgba(1,1,1,0.25);
+    box-shadow: 0px 0px 50px 5px rgba(1,1,1,1);
+    
+    grid-gap: 10px;
+    padding: 10px;
+    text-decoration: none;
+    color: var(--text);
+}
+#FormHeader {
+    grid-area: perm;
+    text-align: center;
+    align-content:center;
+}
+#FormTitle {
+    grid-area: title;
+}
+#FormShortDescription {
+    grid-area: sDesc;
+    max-width: 4fr;
+    min-height: 5em;
+    max-height: 75%;
+}
+#FormPrice {
+    grid-area: prc;
+}
+#FormImage {
+    grid-area: img;
+    min-height: 300px;
+}
+#FormImageImg {
+    max-width: 100%;
+    border-radius: 25px;
+    text-align: center;
+    display: inline;
+    box-shadow: 0px 0px 50px 5px rgba(1,1,1,1);
+}
+#FormImageURL {
+    grid-area: imgtxt;
+}
+#FormLongDescription {
+    grid-area: lDesc;
+    height: 25em;
+}
+#FormSubmit {
+    margin: 10em 0em 0em 0em;
+    grid-area: submit;
+}
+.FormBox{
+    width: 100%;
+    display: inline;
+}
+textarea {
+    resize: none;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}

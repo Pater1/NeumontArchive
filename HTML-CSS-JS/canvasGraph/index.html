@@ -1,0 +1,37 @@
+<!DOCTYPE>
+<html>
+    <head>
+    
+    </head>
+    <body>
+        <canvas id="myCanvas" width="600" height="600" style="border:1px solid #dddddd;">
+        Your browser does not support the HTML5 canvas tag.</canvas>
+        <script>
+            var theCanvas=document.getElementById("myCanvas");
+            var theContext=theCanvas.getContext("2d");
+            
+            var Sales = [52, 48, 74, 31, 47, 25, 67, 78, 45, 75, 85];
+            var GraphWidth = 100, GraphHeight = 100, _UnitSpacing, Border = 10;
+            var scalar = 4.5, trueBorder = Border * scalar;
+            
+            
+            
+            theContext.fillStyle="#FF0000";
+            theContext.fillRect(trueBorder, trueBorder ,GraphWidth * scalar + trueBorder, GraphHeight * scalar + trueBorder);
+            
+            theContext.fillStyle="#0000ff";
+            theContext.beginPath();
+            theContext.moveTo(trueBorder, GraphHeight * scalar + trueBorder*2);
+            
+            var xSpacing = (GraphWidth * scalar + trueBorder) / (Sales.length-1);
+            for(var i = 0; i < Sales.length; i++){
+              theContext.lineTo(xSpacing * (i) + trueBorder,GraphHeight * scalar- Sales[i] * scalar + trueBorder);  
+            }
+            theContext.lineTo(GraphWidth * scalar + trueBorder*2,GraphHeight * scalar + trueBorder*2);
+            theContext.closePath();
+            theContext.fill();
+            
+            
+        </script>
+    </body>
+</html>

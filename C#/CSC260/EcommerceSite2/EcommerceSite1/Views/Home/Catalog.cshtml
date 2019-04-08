@@ -1,0 +1,20 @@
+﻿@using System.Collections.Generic
+@using EcommerceSite1.Models;
+
+@model IEnumerable<Game>
+
+<div>
+    @{
+        bool first = false;
+    }
+    @foreach (Game g in Model) {
+        if (!first) {
+            first = true;
+        } else {
+            <hr />
+        }
+        <div>
+            @Html.Partial("~/Views/GameVeiw_Large.cshtml", g)
+        </div>
+    }
+</div>

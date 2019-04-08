@@ -1,0 +1,9 @@
+{
+  "name": "mongo-db_example-app",
+  "version": "0.0.0",
+  "description": "MongoDB_ExampleApp",
+  "main": "app.js",
+  "author": {
+    "name": "Patrick Conner"
+  }
+}

@@ -1,0 +1,12 @@
+<h1><%=@title%></h1>
+<form action='/read' enctype="multipart/form-data" method='POST'>
+    <input name="title" type="text" value="<%=@title%>" style="visibility: hidden;"/>
+    <input name="story" type="text" value="<%=@filePath%>" style="visibility: hidden;"/>
+    <% @blanks.each_with_index do |item, index| %>
+        <li>
+            <span><%=item%>:   </span>
+            <input name="blank_<%=index%>" type="text" />
+        </li>
+    <% end %>  
+    <input type="submit" value="Upload" />
+</form>

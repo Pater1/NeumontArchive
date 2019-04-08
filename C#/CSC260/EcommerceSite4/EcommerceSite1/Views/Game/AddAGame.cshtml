@@ -1,0 +1,53 @@
+﻿@model EcommerceSite1.Models.Game
+
+@Styles.Render("~/Content/Site.css")
+
+@using (Html.BeginForm("NewGame", "Home", FormMethod.Post, new { ID = "Form" })) {
+    <div id="FormHeader">
+        <h1>Add a new game to the site here!</h1>
+    </div>
+
+    <div id="FormTitle">
+        <h1>Title:</h1>
+        @Html.TextBoxFor(model => model.Title,
+            new { Class = "FormBox" })
+    </div>
+
+    <div id="FormPrice">
+        <h1>Price:</h1><p>$</p>
+        @Html.TextBoxFor(model => model.Price,
+            new { Class = "FormBox" })
+    </div>
+
+    <div id="FormImage">
+        <h1>Thumbnail:</h1><br />
+        <img id="FormImageImg" src="#" />
+    </div>
+    <div id="FormImageURL">
+        <h1>Thumbnail URL:</h1><br />
+        @Html.TextBoxFor(model => model.ImageURL,
+            new { ID = "FormImageURLTextBox", Class = "FormBox" })
+    </div>
+    <button id="FormImageUpdate" onclick="updateImage()" type="button">Update Image</button>
+     
+    <div id="FormShortDescription">
+        <h1>Short Description:</h1><br />
+        @Html.EditorFor(model => model.ShortDescription,
+            new { ID = "FormShortDescriptionTextBox", Class = "FormBox" })
+    </div>
+
+    <div id="FormLongDescription">
+        <h1>Long Description:</h1><br />
+        @Html.EditorFor(model => model.LongDescription,
+            new { ID = "FormLongDescriptionTextBox", Class = "FormBox" })
+    </div>
+
+    <input id="FormSubmit" type="submit" value="Add Or Update Game" />
+}
+<script>
+    var updateImage = function () {
+        var lnk = document.getElementById("FormImageURLTextBox").value;
+        document.getElementById("FormImageImg").setAttribute('src', lnk);
+    }
+    setInterval(updateImage, 1000);
+</script>

@@ -1,0 +1,10 @@
+﻿@using LINQPractice.Models
+@model IEnumerable<Student>
+
+@Html.Partial("~/Views/_Nav.cshtml")
+
+@foreach (Student stu in Model) {
+    <div>
+        @Html.Partial("~/Views/StudentView.cshtml", stu)
+    </div>
+}

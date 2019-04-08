@@ -1,0 +1,100 @@
+﻿@using EcommerceSite1.Models
+@model LoginRegisterComboModel
+
+<div id="RegisterOrLogin">
+    <div id="Header">
+        <div id="h">
+            <h4 id="Register">Create a new account.</h4>
+            <h4 id="Login">Use a local account to log in.</h4>
+        </div>
+        <hr id="1"/>
+        @Html.ValidationSummary("", new { @class = "text-danger", @id = "Validation"})
+        <hr id="2"/>
+    </div>
+
+    @using (Html.BeginForm("LoginOrRegister", "Account", FormMethod.Post, new { @class = "Form", @id = "Register", role = "form" })) {
+        @Html.AntiForgeryToken()
+        <div class="FormListing">
+            <div>
+                @Html.LabelFor(m => m.Register.UserName, new { @class = "Label" }):
+            </div>
+            <div>
+                @Html.TextBoxFor(m => m.Register.UserName, new { @class = "Input" })
+            </div>
+        </div>
+        <div class="FormListing">
+            <div>
+                @Html.LabelFor(m => m.Register.Email, new { @class = "Label" }):
+            </div>
+            <div>
+                @Html.TextBoxFor(m => m.Register.Email, new { @class = "Input" })
+            </div>
+        </div>
+        <div class="FormListing">
+            <div>
+                @Html.LabelFor(m => m.Register.Password, new { @class = "Label" }):
+            </div>
+            <div>
+                @Html.PasswordFor(m => m.Register.Password, new { @class = "Input" })
+            </div>
+        </div>
+        <div class="FormListing">
+            <div>
+                @Html.LabelFor(m => m.Register.ConfirmPassword, new { @class = "Label" }):
+            </div>
+            <div>
+                @Html.PasswordFor(m => m.Register.ConfirmPassword, new { @class = "Input" })
+            </div>
+        </div>
+        <div class="button">
+            <input type="submit" class="btn btn-default" value="Register" />
+        </div>
+    }
+
+    @using (Html.BeginForm("LoginOrRegister", "Account", new { ReturnUrl = (string)null}, FormMethod.Post, new {@id= "Login", @class = "Form", role = "form" })) {
+        @Html.AntiForgeryToken()
+        <div class="FormListing">
+            <div>
+                @Html.LabelFor(m => m.Login.UserName, new { @class = "Label" }):
+            </div>
+            <div>
+                @Html.TextBoxFor(m => m.Login.UserName, new { @class = "Input" })
+            </div>
+        </div>
+        <div class="FormListing">
+            <div>
+                @Html.LabelFor(m => m.Login.Email, new { @class = "Label" }):
+            </div>
+            <div>
+                @Html.TextBoxFor(m => m.Login.Email, new { @class = "Input" })
+                @Html.ValidationMessageFor(m => m.Login.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="FormListing">
+            <div>
+                @Html.LabelFor(m => m.Login.Password, new { @class = "Label" }):
+            </div>
+            <div>
+                @Html.PasswordFor(m => m.Login.Password, new { @class = "Input" })
+                @Html.ValidationMessageFor(m => m.Login.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="button">
+            @Html.CheckBoxFor(m => m.Login.RememberMe)
+            @Html.LabelFor(m => m.Login.RememberMe)
+        </div>
+        <div class="button">
+            <input type="submit" value="Log in" class="btn btn-default" />
+        </div>
+    }
+
+    <div id="OathLogin">
+        <div class="col-md-4">
+            <section id="socialLoginForm">
+                @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = null@*ViewBag.ReturnUrl*@ })
+            </section>
+        </div>
+    </div>
+
+    @section Scripts { @Scripts.Render("~/bundles/jqueryval") }
+</div>
